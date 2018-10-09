@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "query": "@IZM_gov_lv",
+    "sleepTime": 5,
+    "monitoringObjectId1": 1,
+    "monitoringObjectId2": 1,
+    "lastId": null
+  },
+  {
+    "id": 2,
+    "query": "@IeM_gov_lv",
+    "sleepTime": 5,
+    "monitoringObjectId1": 2,
+    "monitoringObjectId2": 2,
+    "lastId": null
+  },
+  {
+    "id": 3,
+    "query": "@ValstsPolicija",
+    "sleepTime": 5,
+    "monitoringObjectId1": 3,
+    "monitoringObjectId2": 2,
+    "lastId": null
+  },
+  {
+    "id": 4,
+    "query": "valsts policija",
+    "sleepTime": 5,
+    "monitoringObjectId1": 3,
+    "monitoringObjectId2": 2,
+    "lastId": null
+  }
+]

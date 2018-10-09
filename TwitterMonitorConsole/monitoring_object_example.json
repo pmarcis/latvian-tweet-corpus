@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "IZM_gov_lv",
+    "twitterAccount": "IZM_gov_lv",
+    "type": "Government institution",
+    "parentId": 1,
+    "lastId": null
+  },
+  {
+    "id": 2,
+    "name": "IeM_gov_lv",
+    "twitterAccount": "IeM_gov_lv",
+    "type": "Government institution",
+    "parentId": 2,
+    "lastId": null
+  },
+  {
+    "id": 3,
+    "name": "Valsts Policija",
+    "twitterAccount": "ValstsPolicija",
+    "type": "Government institution",
+    "parentId": 2,
+    "lastId": null
+  }
+]
