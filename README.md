@@ -3,7 +3,7 @@
 This repository is supposed to contain two things:
 
 * The **Latvian Tweet Corpus** - a collection of tweets that I am continuously collecting for various sentiment analysis and computational social science application purposes (mostly in Latvian). Due to the size of the corpus, I cannot share it openly, but if you will contact me directly with describing what you intend to do with it, we will definitely find a way how I can share the data with you.
-* Tools for a tweet corpus collection. I have factored the **Twitter Monitor**, the solution that collects the tweets, out of my experimental projects that can be used to collect tweets from Twitter. So ... if you are interested in the **Twitter Monitor**, read further.
+* Tools for tweet corpus collection. I have factored the **Twitter Monitor**, the solution that collects the tweets, out of my experimental projects that can be used to collect tweets from Twitter. So ... if you are interested in the **Twitter Monitor**, read further.
 
 If you are using the Latvian Tweet Corpus or the **Twitter Monitor** and you happen to publish anything, please be so kind and reference the following paper:
 
@@ -25,7 +25,7 @@ If you are using the Latvian Tweet Corpus or the **Twitter Monitor** and you hap
 
 The **Twitter Monitor** is a console application that provides functionality for continuous monitoring of tweets from a pre-defined list of Twitter users and queries (both can be specified).
 
-The **Twitter Monitor** adapts to the frequency of how users tweet, meaning that users/queries who/that produce tweets more frequently will be monitored more frequently than those that/who tweet less frequently.
+The **Twitter Monitor** adapts to the frequency of how users tweet, meaning that users/queries who/that produce tweets more frequently will be monitored more frequently than those who/that tweet less frequently.
 
 ## Deployment
 
@@ -40,29 +40,36 @@ git clone https://github.com/pmarcis/latvian-tweet-corpus.git
 The compiled version is in the `CompiledVersion` folder.
 
 On Windows you will need the [.NET Framework 4.5.2](https://www.microsoft.com/net/download/dotnet-framework-runtime/net452).
+
 On Linux you will need _mono_ (`sudo apt-get install mono-complete`).
 
 ## Building from Source
 
-For those who know what .NET and C# is: skip this part!
+For those who know what _.NET_ and _C#_ is: skip this part!
 
 ### On Windows
 
 To use the Twitter Monitor on Windows, install Visual Studio (the Community Eddition is free...) and open the project.
 
-`git clone ...` -> open `TwitterMonitor.sln` -> select `Build` and `Build Solution`
+`git clone https://github.com/pmarcis/latvian-tweet-corpus.git` -> open `TwitterMonitor.sln` -> select `Build` and `Build Solution`
 
-The executable files will be in the 
+The executable files will be in the `TwitterMonitorConsole\bin\Release` folder.
 
 ### On Linux
 
-To use the Twitter Monitor on Linux, you will need _mono_. To install mono, execute: `sudo apt-get install mono-complete`.
+To use the Twitter Monitor on Linux, you will need _mono_. To install mono, execute:
+
+```bash
+sudo apt-get install mono-complete
+```
 
 Then:
+
 ```bash
 git clone https://github.com/pmarcis/latvian-tweet-corpus.git
-cd latvian-tweet-corpus/TwitterMonitorConsole
-xbuild /p:Configuration=Release TwitterMonitorConsole.csproj
+cd latvian-tweet-corpus
+msbuild /p:Configuration=Release TwitterMonitor.sln
+cd TwitterMonitorConsole/bin/Release
 ```
 
 ## Usage
@@ -81,5 +88,22 @@ To launch the Twitter Monitor on Windows, execute:
 .\TwitterMonitorConsole.exe -q query_example.json -mo monitoring_object_example.json -o tweets -si 50000 -st 6 -at [AccessToken] -ats [AccesstokenSecret] -ck [ConsumerKey] -cs [ConsumerSecret]
 ```
 
+The following arguments are needed:
+
+* `-q [QueryFile]` - path of the query JSON file
+* `-mo [MonitoringObjectFile]` - path of the monitoring object JSON file
+* `-o   [OutPrefix]` - prefix of the output files (the **Twitter Monitor** will output 3 JSON files (tweets, queries, and monitoring objects) after X (specified by `-si`) collected tweets and the `-o` prefix specifies where to save the JSON files (the ending fill have a timestamp - so ... no worries about possible overwriting of previous data)
+* `-si  [SavingInterval]` - the tweet interval that will be used to create JSON files (default: 50000) (optional). If this number is less than 1000, there will be an initial set of JSONs created after the first 1000 collected tweets.
+* `-st  [SleepTime]` - to obey Twitter's rules, a sleep time is used (the polite interval(and the default) is 6 seconds per request; make sure not to set this lower or you will risk getting banned from Twitter) (optional)
+* `-at  [AccessToken]` - the access token for Twitter API
+* `-ats [AccessTokenSecret]` - the access token secret for Twitter API
+* `-ck  [ConsumerKey]` - the consumer key for Twitter API
+* `-cs  [ConsumerSecret]` - the consumer secret for Twitter API
+
 To launch the Twitter Monitor on Linux, execute:
+
+```bash
 mono TwitterMonitorConsole.exe -q query_example.json -mo monitoring_object_example.json -o tweets -si 50000 -st 6 -at [AccessToken] -ats [AccesstokenSecret] -ck [ConsumerKey] -cs [ConsumerSecret]
+```
+
+The **Twitter Monitor** can be gracefully stopped by creating a file named `stop` in the folder where the executable file is located. This will trigger the creation of the last JSON file.
