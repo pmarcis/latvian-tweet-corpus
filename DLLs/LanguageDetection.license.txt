@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/pdonald/language-detection/master/License.txt

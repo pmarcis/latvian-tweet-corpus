@@ -8,6 +8,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01DEACE6-2FD9-4396-A94B-E883A720B4FB}"
 	ProjectSection(SolutionItems) = preProject
 		DLLs\LanguageDetection.dll = DLLs\LanguageDetection.dll
+		DLLs\LanguageDetection.license.txt = DLLs\LanguageDetection.license.txt
+		DLLs\log4net.dll = DLLs\log4net.dll
+		DLLs\log4net.license.txt = DLLs\log4net.license.txt
+		DLLs\log4net.xml = DLLs\log4net.xml
+		DLLs\Newtonsoft.Json.dll = DLLs\Newtonsoft.Json.dll
+		DLLs\Newtonsoft.Json.license.md = DLLs\Newtonsoft.Json.license.md
+		DLLs\Newtonsoft.Json.xml = DLLs\Newtonsoft.Json.xml
 		DLLs\Twitterizer2.dll = DLLs\Twitterizer2.dll
 		DLLs\Twitterizer2.license.txt = DLLs\Twitterizer2.license.txt
 	EndProjectSection
